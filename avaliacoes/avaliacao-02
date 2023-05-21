@@ -1,13 +1,12 @@
 #include <stdio.h>
-
 #define tamanho 2
 
-void somaMatrizes(int (*A)[tamanho], int (*B)[tamanho], int (*C)[tamanho]) {
+void somaMatrizes(int (*matrizA)[tamanho], int (*matrizB)[tamanho], int (*matrizC)[tamanho]) {
     int i, j;
     
     for (i = 0; i < tamanho; i++) {
         for (j = 0; j < tamanho; j++) {
-            C[i][j] = A[i][j] + B[i][j];
+            matrizC[i][j] = matrizA[i][j] + matrizB[i][j];
         }
     }
 }
@@ -25,13 +24,13 @@ void imprimirMatriz(int (*matriz)[tamanho]) {
 }
 
 int main() {
-    int A[tamanho][tamanho] = {{1, 2}, {3, 4}};
-    int B[tamanho][tamanho] = {{5, 6}, {7, 8}};
-    int C[tamanho][tamanho];
+    int matrizA[tamanho][tamanho] = {{1, 2}, {3, 4}};
+    int matrizB[tamanho][tamanho] = {{5, 6}, {7, 8}};
+    int matrizC[tamanho][tamanho];
     
-    somaMatrizes(A, B, C);
+    somaMatrizes(matrizA, matrizB, matrizC);
     printf("Matriz C =(soma de A e B):\n\n");
-    imprimirMatriz(C);
+    imprimirMatriz(matrizC);
     
     return 0;
 }
