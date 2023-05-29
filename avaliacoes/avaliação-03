@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// estrutura
+struct Dados_jogadores {
+    int camisa;
+    char nome[50];
+    float salario;
+};
+typedef struct Dados_jogadores Dados_jogadores;
+
+int main() {
+    // 
+    struct Dados dados;
+
+    printf("Digite um número: ");
+    scanf("%d", &dados.numero);
+
+    printf("Digite um nome: ");
+    scanf("%s", dados.nome);
+
+    printf("Digite um valor: ");
+    scanf("%f", &dados.valor);
+
+    // Abre o arquivo para gravação
+    FILE *arquivo = fopen("dados.txt", "w");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // Grava a estrutura no arquivo
+    fwrite(&dados, sizeof(struct Dados), 1, arquivo);
+
+    // Fecha o arquivo
+    fclose(arquivo);
+
+    printf("Dados gravados com sucesso no arquivo 'dados.txt'.\n");
+
+    return 0;
+}
